@@ -15,21 +15,21 @@
         </div>
       </template>
       <div class="flex items-center gap-4 mb-4">
-        <label for="username" class="font-semibold w-24">Nombre</label>
+        <label for="username" class="font-semibold w-24">Fist Name</label>
         <InputText type="text" v-model="name" />
       </div>
       <div class="flex items-center gap-4 mb-8">
-        <label for="email" class="font-semibold w-24">Apellidos</label>
+        <label for="email" class="font-semibold w-24">Last Name</label>
         <InputText type="text" v-model="apellido" />
       </div>
       <div class="flex items-center gap-4 mb-8">
         <label for="email" class="font-semibold w-24">
-          Correo Electrónico
+          Email
         </label>
         <InputText type="text" v-model="correo" />
       </div>
       <div class="flex items-center gap-4 mb-8">
-        <label for="email" class="font-semibold w-24">Teléfono</label>
+        <label for="email" class="font-semibold w-24">Phone</label>
         <InputText type="text" v-model="talefono" />
       </div>
       <div class="flex justify-end gap-2">
@@ -43,7 +43,7 @@
           <Button type="button" label="Save" @click="createuser"></Button>
         </div>
         <div v-else>
-          <Button type="button" label="Save" @click="updateuser"></Button>
+          <Button type="button" label="Update" @click="updateuser"></Button>
         </div>
       </div>
     </Dialog>

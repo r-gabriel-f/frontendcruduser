@@ -8,8 +8,8 @@
       @update:visible="visibledelete = $event"
     >
       <span
-        >Estas seguro que quieres borrar el usuario {{ userinfo.name }}
-        {{ userinfo.apellidos }}
+        >Are you sure you want to delete the user {{ userinfo.name }}
+        {{ userinfo.apellidos }} ?
       </span>
       <div class="flex justify-end gap-2">
         <Button

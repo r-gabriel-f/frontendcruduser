@@ -33,9 +33,9 @@
         </div>
       </template>
       <Column field="name" header="Name"></Column>
-      <Column field="apellidos" header="Apellidos"></Column>
+      <Column field="apellidos" header="Last Name"></Column>
       <Column field="correoelectronico" header="Email"></Column>
-      <Column field="telefono" header="Telefono"></Column>
+      <Column field="telefono" header="Phone"></Column>
       <Column header="Actions">
         <template #body="slotProps">
           <Button
