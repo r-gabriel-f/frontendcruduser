@@ -1,5 +1,6 @@
 <template>
   <div class="card flex justify-center">
+    <Toast />
     <Dialog
       :visible="visibledelete"
       modal
@@ -31,6 +32,10 @@
 
 <script setup>
 import userService from "../services/client/user.service";
+import Toast from 'primevue/toast';
+
+import { useToast } from "primevue/usetoast";
+const toast = useToast();
 const visibledelete = defineModel("visible");
 const deleteuser = defineModel("deleteuser");
 
@@ -45,10 +50,21 @@ const emit = defineEmits(["userDeleted"]);
 const deleteusuario = async () => {
   try {
     await userService.remove(props.userinfo.id);
+    toast.add({
+      severity: "success",
+      summary: "Success",
+      detail: `User deleted successfully ${props.userinfo.name} ${props.userinfo.apellidos}`,
+      life: 3000,
+    })
     visibledelete.value = false;
     emit('userDeleted', props.userinfo.id);
   } catch (error) {
-    console.error("Error creating user:", error);
+    toast.add({
+      severity: "error",
+      summary: "Error",
+      detail: "Failed to delete user",
+      life: 3000,
+    })
   }
 };
 </script>

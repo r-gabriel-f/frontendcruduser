@@ -8,9 +8,12 @@ import InputText from "primevue/inputtext"
 import Dialog from 'primevue/dialog';
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
-import ToastService from 'primevue/toastservice';
-import Toast from 'primevue/toast'
 import 'primeicons/primeicons.css';
+import ToastService from 'primevue/toastservice';
+import Toast from 'primevue/toast';
+
+import InputNumber from 'primevue/inputnumber';
+
 const app = createApp(App);
 app.use(PrimeVue, {
     theme: {
@@ -24,5 +27,6 @@ app.component('InputText', InputText);
 app.component('Dialog', Dialog);
 app.component('DataTable', DataTable);
 app.component('Column', Column);
+app.component('InputNumber', InputNumber);
 
 app.mount("#app");

@@ -24,7 +24,11 @@
     >
       <template #header>
         <div class="flex justify-between gap-2">
-          <Button label="Create User" icon="pi pi-plus" @click="visible = true" />
+          <Button
+            label="Create User"
+            icon="pi pi-plus"
+            @click="visible = true"
+          />
           <InputText
             v-model="filters['global'].value"
             placeholder="Search"
@@ -59,7 +63,10 @@ import { onMounted, ref, watch } from "vue";
 import userService from "../services/client/user.service";
 import ModalCreateEditUser from "./ModalCreateEditUser.vue";
 import ModalDelete from "./ModalDelete.vue";
-import { FilterMatchMode } from '@primevue/core/api';
+import { FilterMatchMode } from "@primevue/core/api";
+
+import { useToast } from "primevue/usetoast";
+const toast = useToast();
 const visible = ref(false);
 const visibledelete = ref(false);
 const newUser = ref([]);
@@ -68,7 +75,7 @@ const datauser = ref([]);
 const userinfo = ref();
 const userid = ref();
 const filters = ref({
-  global: { value: null, matchMode: FilterMatchMode.CONTAINS  },
+  global: { value: null, matchMode: FilterMatchMode.CONTAINS },
 });
 const deleteusuario = (data) => {
   visibledelete.value = true;
@@ -87,7 +94,6 @@ const handleUserUpdated = (updatedUserId) => {
   );
   if (index) {
     datauser.value[index] = updatedUserId;
-    console.log(datauser.value);
   }
 };
 onMounted(async () => {
@@ -95,7 +101,12 @@ onMounted(async () => {
     const response = await userService.getAll();
     datauser.value = response.data;
   } catch (error) {
-    console.error("Error fetching users:", error);
+    toast.add({
+      severity: "error",
+      summary: "Error",
+      detail: "Failed to fetch users",
+      life: 3000,
+    });
   }
 });
 watch(newUser, (value) => {
@@ -105,7 +116,7 @@ watch(newUser, (value) => {
 });
 watch(deleteuser, (value) => {
   if (value) {
-    console.log(value);
+    datauser.value = datauser.value.filter((user) => user.id !== value.id);
   }
 });
 </script>
